@@ -1,7 +1,0 @@
-/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/build_crazysim_gz/CMakeFiles/gz_crazysim_plugin.dir
-/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/build_crazysim_gz/CMakeFiles/edit_cache.dir
-/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/build_crazysim_gz/CMakeFiles/rebuild_cache.dir
-/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/build_crazysim_gz/CMakeFiles/list_install_components.dir
-/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/build_crazysim_gz/CMakeFiles/install.dir
-/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/build_crazysim_gz/CMakeFiles/install/local.dir
-/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/build_crazysim_gz/CMakeFiles/install/strip.dir
