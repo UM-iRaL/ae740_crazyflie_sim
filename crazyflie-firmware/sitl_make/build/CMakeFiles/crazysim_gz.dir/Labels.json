@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/CMakeFiles/crazysim_gz"
+		},
+		{
+			"file" : "/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/CMakeFiles/crazysim_gz.rule"
+		},
+		{
+			"file" : "/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/CMakeFiles/crazysim_gz-complete.rule"
+		},
+		{
+			"file" : "/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/crazysim_gz-prefix/src/crazysim_gz-stamp/crazysim_gz-build.rule"
+		},
+		{
+			"file" : "/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/crazysim_gz-prefix/src/crazysim_gz-stamp/crazysim_gz-configure.rule"
+		},
+		{
+			"file" : "/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/crazysim_gz-prefix/src/crazysim_gz-stamp/crazysim_gz-download.rule"
+		},
+		{
+			"file" : "/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/crazysim_gz-prefix/src/crazysim_gz-stamp/crazysim_gz-install.rule"
+		},
+		{
+			"file" : "/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/crazysim_gz-prefix/src/crazysim_gz-stamp/crazysim_gz-mkdir.rule"
+		},
+		{
+			"file" : "/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/crazysim_gz-prefix/src/crazysim_gz-stamp/crazysim_gz-patch.rule"
+		},
+		{
+			"file" : "/home/atharva/Teaching/AE740_Labs/ae740_crazyflie_sim/crazyflie-firmware/sitl_make/build/crazysim_gz-prefix/src/crazysim_gz-stamp/crazysim_gz-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"crazysim_gz"
+		],
+		"name" : "crazysim_gz"
+	}
+}
