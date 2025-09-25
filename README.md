@@ -85,7 +85,7 @@ colcon build --symlink-install
 
 
 # How to use
-**Note:** The workflow requires three separate terminals, each dedicated to a specific component:
+**Note:** The workflow requires four separate terminals, each dedicated to a specific component:
 
 1. **Terminal 1:** Launches the SITL Gazebo simulation (custom Crazyflie firmware).
 2. **Terminal 2:** Starts the Crazyswarm2 `crazyflie_server` (ROS 2 interface).
