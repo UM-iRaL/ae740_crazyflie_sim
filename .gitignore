@@ -6,3 +6,4 @@ ros2_ws/cache/*
 ros2_ws/src/controller_pkg/*
 overview.md
 crazyflie-firmware/sitl_make/build/*
+!ros2_ws/src/crazyswarm2/crazyflie/deps/crazyflie_tools/crazyflie_cpp/crazyflie-link-cpp/tools
