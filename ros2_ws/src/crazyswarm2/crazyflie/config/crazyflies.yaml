@@ -12,7 +12,7 @@ robots:
       - 1
       - 0
   cf_2:
-    enabled: false
+    enabled: true
     uri: udp://0.0.0.0:19851
     initial_position:
       - 0
