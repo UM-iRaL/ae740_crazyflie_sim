@@ -52,7 +52,7 @@ source ae740_venv/bin/activate
 Then install all required Python packages:
 
 ```bash
-pip install Jinja2 rowan transforms3d yq jq empy=3.3.4 catkin_pkg lark
+pip install Jinja2 rowan transforms3d yq jq empy==3.3.4 catkin_pkg lark
 ```
 
 
@@ -94,13 +94,26 @@ colcon build --symlink-install
 
 Always start the SITL simulation in Terminal 1 before launching the server or controller nodes in the other terminals. Gazebo SITL simulation (terminal 1) and server (terminal 2) must be restarted every time you run a new controller, as the current setup does not support reusing the server or simulation instance. This ensures a clean environment for each experiment.
 
-### Terminal 1: Start SITL Gazebo (custom Crazyflie Firmware)
+### Terminal 1: Start SITL Gazebo (custom Crazyflie Firmware) 
 Open a terminal and run (inside the `ae740_crazyflie_sim`)
 ```bash
-bash crazyflie-firmware/tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_singleagent.sh 
+cd crazyflie-firmware
+bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_singleagent.sh 
 ```
 
-This script `sitl_singleagent.sh` launches the SITL for a single crazyflie. The crazyflies have UDP addresses starting from `udp://0.0.0.0:19850`. If the Gazebo opens the window, but becomes unresponsive or shows `Gazebo GUI not responding`, check the following [page](https://gazebosim.org/docs/latest/troubleshooting/#network-configuration-issue). Your system might have the ROS Multicast disabled, which can be solved by following the steps [here](https://docs.ros.org/en/rolling/How-To-Guides/Installation-Troubleshooting.html#enable-multicast). 
+This script `sitl_singleagent.sh` launches the SITL for a single crazyflie. The crazyflies have UDP addresses starting from `udp://0.0.0.0:19850`. Also, make sure that *ONLY* `cf_1` is enabled in the configuration file `ae740_crazyflie_sim/ros2_ws/src/crazyswarm2/crazyflie/config/crazyflies.yaml`. This is important to make sure that the `crazyflie_server` in terminal 2 runs correctly. 
+
+### Terminal 1: Start SITL Gazebo (custom Crazyflie Firmware) [ALTERNATIVE SCRIPT/RECOMMENDED]
+Alternatively, you can launch multiple/single crazyflies (used for lab 4 target tracking) using the following command, which takes care of the configuration file internally. Make sure you are in the `crazyflie-firmware` directory.
+```bash
+cd crazyflie-firmware
+bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_target_tracking.sh -t 0 -p 1 -m crazyflie
+```
+Here, `-t` is the number of target drones, `-p` is the number of pursuer drones, and `-m` is the model type. The above command launches just one drone, labeled as the pursuer. You can modify the `-t` and `-p` values to launch multiple drones. The above script launches one crazyflie at the origin. This script automatically modifies the `crazyflies.yaml` configuration file to enable/disable the crazyflies based on the number of target/pursuer drones.
+
+
+If the Gazebo opens the window, but becomes unresponsive or shows `Gazebo GUI not responding`, check the following [page](https://gazebosim.org/docs/latest/troubleshooting/#network-configuration-issue). Your system might have the ROS Multicast disabled, which can be solved by following the steps [here](https://docs.ros.org/en/rolling/How-To-Guides/Installation-Troubleshooting.html#enable-multicast). 
+
 
 ### Terminal 2: Start the Crazyswarm2 `crazyflie_server`
 The crazyswarm2  configuration files can be found in `ros2_ws/src/crazyswarm2/crazyflie/config/`. The `crazyflies.yaml` describes the robots currently being used. If a robot is not in the simulator or hardware, then it can be disabled by setting the enabled parameter to false. A more detailed description for crazyswarm2 configurations can be found [here](https://imrclab.github.io/crazyswarm2/usage.html).
