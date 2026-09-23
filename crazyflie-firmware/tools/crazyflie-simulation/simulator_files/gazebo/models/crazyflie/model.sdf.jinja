@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.9">
     <model name="crazyflie_{{ cf_id }}">
+        <enable_wind>true</enable_wind>
         <pose>0 0 0 0 0 0</pose>
         <static>false</static>
         <link name="base_link">
@@ -60,9 +61,9 @@
                 <pose>0 0 0 0 -0 0</pose>
                 <mass>0.0008</mass>
                 <inertia>
-                    <ixx>0.000000002*70</ixx>
-                    <iyy>0.000000167*70</iyy>
-                    <izz>0.000000168*70</izz>
+                    <ixx>0.000000002*50</ixx>
+                    <iyy>0.000000167*50</iyy>
+                    <izz>0.000000168*50</izz>
                     <ixy>0</ixy>
                     <ixz>0</ixz>
                     <iyz>0</iyz>
@@ -294,7 +295,7 @@
             <commandSubTopic>command/motor_speed</commandSubTopic>
             <actuator_number>3</actuator_number>
             <rotorDragCoefficient>9.1785e-7</rotorDragCoefficient>
-            <rollingMomentCoefficient>0.000001</rollingMomentCoefficient>
+            <rollingMomentCoefficient>0.0000001</rollingMomentCoefficient>
             <motorSpeedPubTopic>motor_speed/3</motorSpeedPubTopic>
             <rotorVelocitySlowdownSim>70</rotorVelocitySlowdownSim>
             <motorType>velocity</motorType>

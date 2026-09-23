@@ -7,10 +7,6 @@ robots:
       - 0
       - 0
     type: cf_sim
-    intial_position:
-      - 0
-      - 1
-      - 0
   cf_2:
     enabled: false
     uri: udp://0.0.0.0:19851
@@ -19,10 +15,6 @@ robots:
       - 0
       - 0
     type: cf_sim
-    intial_position:
-      - 0
-      - 0
-      - 0
   cf_3:
     enabled: false
     uri: udp://0.0.0.0:19852
@@ -31,10 +23,6 @@ robots:
       - 0
       - 0
     type: cf_sim
-    intial_position:
-      - 2
-      - 1
-      - 0
   cf_4:
     enabled: false
     uri: udp://0.0.0.0:19853
@@ -43,10 +31,6 @@ robots:
       - 1
       - 0
     type: cf_sim
-    intial_position:
-      - 0
-      - 0
-      - 0
   cf_5:
     enabled: false
     uri: udp://0.0.0.0:19854
@@ -55,10 +39,6 @@ robots:
       - 1
       - 0
     type: cf_sim
-    intial_position:
-      - 1
-      - 0
-      - 0
   cf_6:
     enabled: false
     uri: udp://0.0.0.0:19855
@@ -67,10 +47,6 @@ robots:
       - 0
       - 0
     type: cf_sim
-    intial_position:
-      - 0
-      - 0
-      - 0
   cf_7:
     enabled: false
     uri: udp://0.0.0.0:19856
@@ -79,10 +55,6 @@ robots:
       - 1
       - 0
     type: cf_sim
-    intial_position:
-      - 1
-      - 0
-      - 0
   cf_8:
     enabled: false
     uri: udp://0.0.0.0:19857
@@ -91,10 +63,6 @@ robots:
       - 2
       - 0
     type: cf_sim
-    intial_position:
-      - 2
-      - 0
-      - 0
 robot_types:
   cf_sim:
     motion_capture:

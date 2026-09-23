@@ -7,3 +7,12 @@ ros2_ws/src/controller_pkg/*
 overview.md
 crazyflie-firmware/sitl_make/build/*
 !ros2_ws/src/crazyswarm2/crazyflie/deps/crazyflie_tools/crazyflie_cpp/crazyflie-link-cpp/tools
+
+# Local setup created by following the README
+ae740_venv/
+acados/
+
+# colcon output when built from the repository root instead of ros2_ws
+/build/
+/install/
+/log/

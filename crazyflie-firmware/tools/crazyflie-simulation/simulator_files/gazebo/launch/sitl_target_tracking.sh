@@ -50,8 +50,9 @@ function spawn_model() {
 
 if [ "$1" == "-h" ] || [ "$1" == "--help" ]
 then
-	echo "Description: This script is used to spawn multiple vehicles in gazebo in a square formation."
-	echo "Usage: $0 [-n <num_vehicles>] [-m <vehicle_model>] [-w <world>]"
+	echo "Description: This script is used to spawn target and pursuer vehicles in gazebo."
+	echo "Usage: $0 [-t <num_targets>] [-p <num_pursuers>] [-m <vehicle_model>] [-w <world>]"
+	echo "Note: enable cf_1 ... cf_N (N = targets + pursuers) in ros2_ws/src/crazyswarm2/crazyflie/config/crazyflies.yaml"
 	exit 1
 fi
 
@@ -73,9 +74,9 @@ do
 	esac
 done
 
-NUM_VEHICLES=$((NUM_TARGETS + NUM_PURSUERS))
-
-num_vehicles=${NUM_VEHICLES:=2}
+NUM_TARGETS=${NUM_TARGETS:=0}
+NUM_PURSUERS=${NUM_PURSUERS:=1}
+num_vehicles=$((NUM_TARGETS + NUM_PURSUERS))
 world=${WORLD:=crazysim_default}
 target=${TARGET:=cf2}
 vehicle_model=${VEHICLE_MODEL:="crazyflie"}
@@ -104,60 +105,30 @@ then
 fi
 
 # crazyflie ids are first target ids and then pursuer ids
-# changes to crazyflie config YAML file using "yq"
-YAML_FILE="../ros2_ws/src/crazyswarm2/crazyflie/config/crazyflies.yaml"
-IS_ENABLED=true
-IS_DISABLED=false
-
-# disabling all the crazyflies first
-k=0
-while [ $k -lt 8 ]; do
-	CF_NAME="cf_$(($k + 1))"
-	# enable the crazyflie
-	yq -i -y ".robots.$CF_NAME.enabled = $IS_DISABLED" "$YAML_FILE" 
-	k=$(($k + 1))
-done
-
+# (cf_1 ... cf_T are targets, cf_T+1 ... cf_N are pursuers)
 n=0
 while [ $n -lt $num_vehicles ]; do
-	# denom=$(python -c "from math import ceil, sqrt; print(ceil(sqrt($num_vehicles)))")
-	# x_cord=$(($n%$denom))
-	# y_cord=$(($n/$denom - ($n%$denom)/$denom))
-
-	CF_NAME="cf_$(($n + 1))"
-
-	# for target vehicles first 
+	# for target vehicles first
 	if [ $n -lt $NUM_TARGETS ]
 	then
 		x_cord=$n
 		y_cord=1.0
-		#x_cord=-0.1
-		#y_cord=0.1
-		#x_cord=-0.6
-		#y_cord=0.6
-		INIT_POS="[$x_cord, $y_cord, 0.0]"
-
-		# enable the crazyflie
-		yq -i -y ".robots.$CF_NAME.enabled = $IS_ENABLED" "$YAML_FILE" 
-		# set initial position
-		yq -i -y ".robots.$CF_NAME.intial_position = $INIT_POS" "$YAML_FILE"
-
-		spawn_model ${vehicle_model} $(($n)) $x_cord $y_cord
-		n=$(($n + 1))
 	else
 		x_cord=$(($n - $NUM_TARGETS))
 		y_cord=0.0
-		INIT_POS="[$x_cord, $y_cord, 0.0]"
-
-		# enable the crazyflie
-		yq -i -y ".robots.$CF_NAME.enabled = $IS_ENABLED" "$YAML_FILE" 
-		# set initial position
-		yq -i -y ".robots.$CF_NAME.intial_position = $INIT_POS" "$YAML_FILE"
-
-		spawn_model ${vehicle_model} $(($n)) $x_cord $y_cord
-		n=$(($n + 1))
 	fi
+
+	spawn_model ${vehicle_model} $(($n)) $x_cord $y_cord
+	n=$(($n + 1))
 done
+
+# The crazyflies.yaml config is NOT modified by this script
+echo ""
+echo "Spawned $num_vehicles crazyflie(s): $NUM_TARGETS target(s) and $NUM_PURSUERS pursuer(s)."
+if [ $num_vehicles -eq 1 ]; then CF_LIST="cf_1"; else CF_LIST="cf_1 ... cf_$num_vehicles"; fi
+echo "Make sure ONLY $CF_LIST have 'enabled: true' in"
+echo "ros2_ws/src/crazyswarm2/crazyflie/config/crazyflies.yaml before starting the crazyflie_server."
+echo ""
 
 trap "cleanup" SIGINT SIGTERM EXIT
 
